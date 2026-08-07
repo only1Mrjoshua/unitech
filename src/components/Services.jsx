@@ -46,7 +46,7 @@ export default function Services() {
     {
       id: '05',
       title: 'Petroleum',
-      img: '/Petroleum.jpg',
+      img: '/petroleum.jpg',
       links: [
         { href: 'petroleum-products-trade-logistics.html', label: 'Petroleum Products Trade & Logistics' },
         { href: 'lube-blending-plants.html', label: 'Lube Blending Plants' },
