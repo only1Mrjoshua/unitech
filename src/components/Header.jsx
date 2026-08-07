@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { imagePath } from '../utils/path'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -26,9 +27,10 @@ export default function Header() {
     setOpenSubmenus(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
+  const logoUrl = imagePath('/logo.jpg')
+
   return (
     <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      {/* Top bar */}
       <div
         className="navbar-top"
         style={{ transform: topBarHidden ? 'translateY(-100%)' : 'translateY(0)' }}
@@ -42,23 +44,19 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main navbar */}
       <div className="navbar-main">
         <div className="navbar-inner">
           <Link to="/" className="navbar-logo gap-3">
-            <img src="/logo.jpg" alt="Unitech" className="h-10 w-auto" />
+            <img src={logoUrl} alt="Unitech" className="h-10 w-auto" />
             <span className="logo-text font-bold text-lg whitespace-nowrap">Unitech Energies</span>
           </Link>
 
           <ul className="nav-links" role="menubar">
-            {/* HOME */}
             <li role="none">
               <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')} role="menuitem" end>
                 Home
               </NavLink>
             </li>
-
-            {/* ABOUT – plain <a> */}
             <li role="none">
               <a href="/#about" role="menuitem" aria-haspopup="true">
                 About Us
@@ -71,8 +69,6 @@ export default function Header() {
                 <a href="/#why" role="menuitem"><i className="fas fa-star"></i> Values</a>
               </div>
             </li>
-
-            {/* SERVICES – active on any /services/* */}
             <li role="none">
               <NavLink
                 to="/services"
@@ -84,7 +80,6 @@ export default function Header() {
                 <span className="dropdown-arrow"><i className="fas fa-chevron-down"></i></span>
               </NavLink>
               <div className="dropdown-menu" role="menu">
-                {/* Drilling & Measurements – active only on exact match */}
                 <NavLink
                   to="/services/drilling-measurements"
                   end
@@ -93,7 +88,6 @@ export default function Header() {
                 >
                   <i className="fas fa-tachometer-alt"></i> Drilling &amp; Measurements
                 </NavLink>
-                {/* Others are hash links – no active state */}
                 <a href="/#services" role="menuitem"><i className="fas fa-cogs"></i> Rig Supply &amp; Hoisting</a>
                 <a href="/#services" role="menuitem"><i className="fas fa-chart-line"></i> Mud Logging</a>
                 <a href="/#services" role="menuitem"><i className="fas fa-project-diagram"></i> Project Management</a>
@@ -101,8 +95,6 @@ export default function Header() {
                 <a href="/#services" role="menuitem"><i className="fas fa-tools"></i> Tools Rentals</a>
               </div>
             </li>
-
-            {/* Other hash links */}
             <li role="none"><a href="/#exploration" role="menuitem">Exploration &amp; Energy</a></li>
             <li role="none"><a href="/#careers" role="menuitem">Careers</a></li>
             <li role="none"><a href="/#contact" role="menuitem">Contact</a></li>
@@ -123,11 +115,11 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer same as before, but with logo path updated */}
       <div className={`mobile-drawer ${mobileOpen ? 'active' : ''}`}>
         <div className="mobile-drawer-header">
           <div className="flex items-center gap-3">
-            <img src="/logo.jpg" alt="Unitech" className="h-8 w-auto" />
+            <img src={logoUrl} alt="Unitech" className="h-8 w-auto" />
             <span className="text-[var(--navy)] font-bold text-lg">Unitech Energies</span>
           </div>
           <button className="mobile-drawer-close" onClick={closeMobile}>
@@ -185,7 +177,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Overlay */}
       {mobileOpen && (
         <div className="fixed inset-0 bg-black/30 z-[1050]" onClick={closeMobile}></div>
       )}

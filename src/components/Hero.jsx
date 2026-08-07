@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import { imagePath } from '../utils/path'
 
-const images = ['/hero.jpg', '/dd.jpg', '/we_are_unitech.jpg']
+const images = ['/hero.jpg', '/dd.jpg', '/we_are_unitech.jpg'].map(imagePath)
 
 export default function Hero() {
   const [current, setCurrent] = useState(0)
@@ -32,32 +33,27 @@ export default function Hero() {
       </div>
       <div className="container-custom relative z-20 py-32 md:py-40">
         <div className="max-w-3xl">
-          {/* Eyebrow with explicit colors */}
-          <span 
+          <span
             className="eyebrow text-xs tracking-[0.25em] font-semibold uppercase"
             style={{ color: 'rgba(255,255,255,0.6)' }}
           >
             <span style={{ color: '#3a4eb8' }}>◆</span> Engineering • Energy • Excellence
           </span>
-
           <h1 className="heading-lg text-white mt-4 leading-[1.05]">
             Engineering Solutions That <br className="hidden sm:block" />
             <span className="text-teal-300">Power the Future</span> of Energy
           </h1>
-
-          {/* Description with explicit color */}
-          <p 
+          <p
             className="mt-6 max-w-xl"
-            style={{ 
-              fontSize: '1.0625rem', 
-              lineHeight: '1.7', 
+            style={{
+              fontSize: '1.0625rem',
+              lineHeight: '1.7',
               color: 'rgba(255,255,255,0.7)'
             }}
           >
             Unitech delivers innovative drilling, engineering, exploration, and energy solutions built around safety,
             technical excellence, and operational performance.
           </p>
-
           <div className="flex flex-wrap gap-4 mt-8">
             <a href="#services" className="btn-primary">
               Explore Our Services <i className="fas fa-arrow-right"></i>
